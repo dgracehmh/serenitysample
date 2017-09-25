@@ -1,0 +1,53 @@
+seleniumhub:
+  image: selenium/hub
+  ports:
+    - 4444:4444
+  environment:
+    - GRID_TIMEOUT=45
+    - GRID_BROWSER_TIMEOUT=90
+
+
+#chromenodedebug:
+#  image: selenium/node-chrome-debug
+#  ports:
+#    - 5902:5900
+#  links:
+#    - seleniumhub:hub
+#  volumes:
+#    - /dev/shm:/dev/shm
+#    - /tmp:/home/seluser/Downloads/
+#    - /tmp:/root/Downloads/
+#  environment:
+#    - no_proxy="*.local,169.254/16"
+
+chromenode:
+  image: selenium/node-chrome
+  ports:
+    - 5900
+  links:
+    - seleniumhub:hub
+  volumes:
+    - /dev/shm:/dev/shm
+    - /tmp:/home/seluser/Downloads/
+    - /tmp:/root/Downloads/
+
+
+chromenode1:
+  image: selenium/node-chrome
+  ports:
+    - 5900
+  links:
+    - seleniumhub:hub
+  volumes:
+      - /dev/shm:/dev/shm
+      - /tmp:/home/seluser/Downloads/
+      - /tmp:/root/Downloads/
+
+
+#firefoxnode:
+#  image: selenium/node-firefox
+#  ports:
+#    - 5900
+#  links:
+#    - seleniumhub:hub
+
