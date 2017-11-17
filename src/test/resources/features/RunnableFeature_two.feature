@@ -1,4 +1,4 @@
-@Sample1
+@Sample2
 Feature: CCE integration
 
   Background:
